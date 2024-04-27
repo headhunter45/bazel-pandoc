@@ -1,5 +1,4 @@
 load(":toolchain.bzl", "pandoc_toolchain")
-load(":pandoc.bzl", "PANDOC_EXTENSIONS", "pandoc")
 
 exports_files(["README.md"])
 
@@ -12,32 +11,40 @@ toolchain_type(
 
 pandoc_toolchain(
     exec_compatible_with = [
-        "@bazel_tools//platforms:linux",
-        "@bazel_tools//platforms:x86_64",
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
     ],
     platform = "linux-x86_64",
 )
 
 pandoc_toolchain(
     exec_compatible_with = [
-        "@bazel_tools//platforms:osx",
-        "@bazel_tools//platforms:x86_64",
+        "@platforms//os:linux",
+        "@platforms//cpu:arm64",
     ],
-    platform = "macOS",
+    platform = "linux-arm64",
 )
 
 pandoc_toolchain(
     exec_compatible_with = [
-        "@bazel_tools//platforms:windows",
-        "@bazel_tools//platforms:x86_32",
+        "@platforms//os:osx",
+        "@platforms//cpu:arm64",
     ],
-    platform = "windows-i386",
+    platform = "macOS-arm64",
 )
 
 pandoc_toolchain(
     exec_compatible_with = [
-        "@bazel_tools//platforms:windows",
-        "@bazel_tools//platforms:x86_64",
+        "@platforms//os:osx",
+        "@platforms//cpu:x86_64",
+    ],
+    platform = "macOS-x86_64",
+)
+
+pandoc_toolchain(
+    exec_compatible_with = [
+        "@platforms//os:windows",
+        "@platforms//cpu:x86_64",
     ],
     platform = "windows-x86_64",
 )

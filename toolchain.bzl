@@ -9,7 +9,7 @@ _pandoc_toolchain_info = rule(
     attrs = {
         "pandoc": attr.label(
             allow_single_file = True,
-            cfg = "host",
+            cfg = "exec",
             executable = True,
         ),
     },
